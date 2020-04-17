@@ -17,10 +17,11 @@
 (* The main OCaml version string has moved to ../VERSION *)
 let version = Sys.ocaml_version
 
-let standard_library_default = "%%LIBDIR%%"
+let ( // ) = Filename.concat
+let standard_library_default = (Filename.dirname (Filename.dirname Sys.executable_name)) // "lib" // "ocaml"
 
 let standard_library =
-#if true then
+(* #if true then
   try
     Sys.getenv "OCAMLLIB"
   with Not_found ->
@@ -31,10 +32,12 @@ let standard_library =
   try 
     Sys.getenv "BSLIB"
   with Not_found -> 
-#end
+#end *)
     standard_library_default
+
 let bs_only = ref false
-let standard_runtime = "%%BYTERUN%%"
+
+let standard_runtime = (Filename.dirname Sys.executable_name) // "ocamlrun.exe"
 let ccomp_type = "%%CCOMPTYPE%%"
 let c_compiler = "%%CC%%"
 let c_output_obj = "%%OUTPUTOBJ%%"
