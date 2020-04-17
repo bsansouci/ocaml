@@ -59,7 +59,7 @@ libs: $(FILES)
 
 OCAMLDOC=$(if $(wildcard $(CSLDIR)/ocamldoc/ocamldoc.opt),\
   $(CSLDIR)/ocamldoc/ocamldoc.opt,\
-  $(CSLDIR)/byterun/ocamlrun $(CSLDIR)/ocamldoc/ocamldoc)
+  $(CSLDIR)/byterun/ocamlrun$(EXE) $(CSLDIR)/ocamldoc/ocamldoc)
 
 $(INTF): interfaces
 interfaces: $(MLIS)

@@ -108,19 +108,19 @@ else # Windows
   ifeq "$(wildcard ../flexdll/Makefile)" ""
     FLEXLINK_ENV=
   else
-    FLEXLINK_ENV=OCAML_FLEXLINK="../boot/ocamlrun ../flexdll/flexlink.exe"
+    FLEXLINK_ENV=OCAML_FLEXLINK="../boot/ocamlrun$(EXE) ../flexdll/flexlink.exe"
   endif
 endif
 
-ocamlc := $(FLEXLINK_ENV) ../byterun/ocamlrun ../ocamlc $(flags)
+ocamlc := $(FLEXLINK_ENV) ../byterun/ocamlrun$(EXE) ../ocamlc $(flags)
 
-ocamlopt := $(FLEXLINK_ENV) ../byterun/ocamlrun ../ocamlopt $(flags)
+ocamlopt := $(FLEXLINK_ENV) ../byterun/ocamlrun$(EXE) ../ocamlopt $(flags)
 
-ocamldep := ../byterun/ocamlrun ../tools/ocamldep -slash
+ocamldep := ../byterun/ocamlrun$(EXE) ../tools/ocamldep -slash
 
-ocamllex := ../byterun/ocamlrun ../lex/ocamllex
+ocamllex := ../byterun/ocamlrun$(EXE) ../lex/ocamllex
 
-ocamlyacc := ../yacc/ocamlyacc
+ocamlyacc := ../yacc/ocamlyacc$(EXE)
 
 ocamlcdefaultflags :=
 

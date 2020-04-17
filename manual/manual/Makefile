@@ -16,7 +16,7 @@ export DYLD_LIBRARY_PATH ?= $(SRC)/otherlibs/unix/:$(SRC)/otherlibs/str/
 
 OCAMLDOC=$(if $(wildcard $(SRC)/ocamldoc/ocamldoc.opt),\
  $(SRC)/ocamldoc/ocamldoc.opt,\
- $(SRC)/byterun/ocamlrun $(SRC)/ocamldoc/ocamldoc)\
+ $(SRC)/byterun/ocamlrun$(EXE) $(SRC)/ocamldoc/ocamldoc)\
  -hide Pervasives
 
 MLIS=$(SRC)/stdlib/*.mli \

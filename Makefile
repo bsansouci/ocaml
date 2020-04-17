@@ -48,8 +48,8 @@ else
 LN = ln -sf
 endif
 
-CAMLRUN ?= boot/ocamlrun.exe
-CAMLYACC ?= boot/ocamlyacc.exe
+CAMLRUN ?= boot/ocamlrun$(EXE)
+CAMLYACC ?= boot/ocamlyacc$(EXE)
 include stdlib/StdlibModules
 
 CAMLC=$(CAMLRUN) boot/ocamlc -g -nostdlib -I boot -use-prims byterun/primitives
@@ -277,7 +277,7 @@ INSTALL_STUBLIBDIR=$(DESTDIR)$(STUBLIBDIR)
 INSTALL_MANDIR=$(DESTDIR)$(MANDIR)
 INSTALL_FLEXDLL=$(INSTALL_LIBDIR)/flexdll
 
-RUNTOP=./byterun/ocamlrun ./ocaml \
+RUNTOP=./byterun/ocamlrun$(EXE) ./ocaml \
   -nostdlib -I stdlib \
   -noinit $(TOPFLAGS) \
   -I otherlibs/$(UNIXLIB)
@@ -523,7 +523,7 @@ coreboot:
 # Rebuild the library (using byterun/ocamlrun ./ocamlc)
 	$(MAKE) library-cross
 # Promote the new compiler and the new runtime
-	$(MAKE) CAMLRUN=byterun/ocamlrun promote
+	$(MAKE) CAMLRUN=byterun/ocamlrun$(EXE) promote
 # Rebuild the core system
 	$(MAKE) partialclean
 	$(MAKE) core
@@ -1022,7 +1022,7 @@ library: ocamlc
 
 .PHONY: library-cross
 library-cross:
-	$(MAKE) -C stdlib $(BOOT_FLEXLINK_CMD) CAMLRUN=../byterun/ocamlrun all
+	$(MAKE) -C stdlib $(BOOT_FLEXLINK_CMD) CAMLRUN=../byterun/ocamlrun$(EXE) all
 
 .PHONY: libraryopt
 libraryopt:
