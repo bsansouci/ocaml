@@ -383,8 +383,10 @@ beforedepend:: utils/config.ml
 .PHONY: coldstart
 coldstart:
 	$(MAKE) -C byterun $(BOOT_FLEXLINK_CMD) all
+	cp byterun/ocamlrun$(EXE) boot/ocamlrun
 	cp byterun/ocamlrun$(EXE) boot/ocamlrun$(EXE)
 	$(MAKE) -C yacc $(BOOT_FLEXLINK_CMD) all
+	cp yacc/ocamlyacc$(EXE) boot/ocamlyacc
 	cp yacc/ocamlyacc$(EXE) boot/ocamlyacc$(EXE)
 	$(MAKE) -C stdlib $(BOOT_FLEXLINK_CMD) \
 	  COMPILER="../boot/ocamlc -use-prims ../byterun/primitives" all
