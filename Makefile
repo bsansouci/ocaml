@@ -48,8 +48,8 @@ else
 LN = ln -sf
 endif
 
-CAMLRUN ?= boot/ocamlrun
-CAMLYACC ?= boot/ocamlyacc
+CAMLRUN ?= boot/ocamlrun.exe
+CAMLYACC ?= boot/ocamlyacc.exe
 include stdlib/StdlibModules
 
 CAMLC=$(CAMLRUN) boot/ocamlc -g -nostdlib -I boot -use-prims byterun/primitives
